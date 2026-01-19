@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HR HOPE - Hoping for the Best | Official Hub</title>
+    
+    <!-- SEO & Social Meta Tags -->
+    <meta name="description" content="Official hub of HR HOPE (Mr. Hope). Follow on TikTok, YouTube, Instagram, Facebook & X for viral content. Hoping for the best.">
+    <meta name="keywords" content="HR Hope, Mr Hope, Viral, TikTok, YouTube, Kenya, Content Creator, Optimistic">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="HR HOPE - Official Hub">
+    <meta property="og:description" content="Connect with HR HOPE on all platforms. Daily viral content, motivation, and entertainment. Hoping for the best!">
+    <meta property="og:image" content="https://z-cdn-media.chatglm.cn/files/ed712168-840e-46e4-a9b0-4e91b807d2da.png?auth_key=1868167284-e20f5edc61b541a99be5c4dec5da24f0-0-f8322b02656ceccd211f9a839d65d8e1">
+    <meta property="og:url" content="https://your-website-url.com">
+    <meta property="og:type" content="profile">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="HR HOPE - Official Hub">
+    <meta name="twitter:description" content="Follow Mr. Hope everywhere. Viral content and daily motivation.">
+    <meta name="twitter:image" content="https://z-cdn-media.chatglm.cn/files/ed712168-840e-46e4-a9b0-4e91b807d2da.png?auth_key=1868167284-e20f5edc61b541a99be5c4dec5da24f0-0-f8322b02656ceccd211f9a839d65d8e1">
+
+    <!-- FontAwesome & Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CSS Variables --- */
+        :root {
+            --primary-color: #2ecc71;
+            --primary-dark: #27ae60;
+            --secondary-color: #2c3e50;
+            --accent-color: #f1c40f; /* Gold/Yellow */
+            --accent-dark: #f39c12;
+            --bg-color: #f4f7f6;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+            --shadow: 0 10px 30px rgba(0,0,0,0.08);
+            --transition: all 0.3s ease;
+        }
+
+        /* --- Global Reset --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+            padding-bottom: 80px;
+        }
+
+        /* --- Header --- */
+        header {
+            background-color: var(--card-bg);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo span { color: var(--primary-color); }
+
+        /* --- Main Container --- */
+        main {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            background: var(--card-bg);
+            border-radius: 24px;
+            padding: 3rem 2rem;
+            margin-bottom: 2.5rem;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        .profile-wrapper {
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 1rem;
+            border-radius: 50%;
+            padding: 4px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
+        }
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid var(--card-bg);
+        }
+        .hero h1 { font-size: 1.8rem; margin-bottom: 0.5rem; color: var(--secondary-color); }
+        .tagline { color: #7f8c8d; font-size: 0.95rem; font-weight: 500; margin-bottom: 1.5rem; }
+        
+        .hero-actions { display: flex; gap: 10px; flex-direction: column; }
+
+        .btn {
+            width: 100%;
+            padding: 0.9rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: var(--transition);
+        }
+        .btn-primary {
+            background: linear-gradient(45deg, var(--accent-color), var(--accent-dark));
+            color: var(--secondary-color);
+            box-shadow: 0 4px 15px rgba(241, 196, 15, 0.4);
+        }
+        .btn-secondary {
+            background: white;
+            color: var(--secondary-color);
+            border: 2px solid #eee;
+        }
+        .btn:hover { transform: translateY(-2px); filter: brightness(1.05); }
+
+        /* --- Viral Studio Section --- */
+        .studio-section {
+            background: var(--card-bg);
+            border-radius: 24px;
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+            box-shadow: var(--shadow);
+            text-align: left;
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+        }
+        .section-title i { color: #e74c3c; /* Fire color */ }
+
+        /* Post Input */
+        .input-group { margin-bottom: 1.5rem; }
+        .post-input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #f0f0f0;
+            border-radius: 12px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            min-height: 100px;
+            resize: vertical;
+            transition: var(--transition);
+        }
+        .post-input:focus { border-color: var(--primary-color); outline: none; background: #fcfcfc; }
+
+        /* File Upload Area */
+        .upload-area {
+            border: 2px dashed #cbd5e0;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            background: #f8fafc;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        .upload-area:hover { border-color: var(--primary-color); background: #f0fdf4; }
+        .upload-icon { font-size: 2rem; color: var(--primary-color); margin-bottom: 0.5rem; }
+        .upload-text { font-size: 0.9rem; color: #64748b; }
+        .upload-text strong { color: var(--secondary-color); }
+        
+        /* The hidden actual input */
+        #fileInput { position: absolute; width: 100%; height: 100%; top: 0; left: 0; opacity: 0; cursor: pointer; }
+
+        /* Preview Grid */
+        .preview-grid {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+        .preview-item {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #eee;
+        }
+        .preview-item img, .preview-item video { width: 100%; height: 100%; object-fit: cover; }
+        .remove-file {
+            position: absolute;
+            top: 2px; right: 2px;
+            background: rgba(0,0,0,0.6);
+            color: white;
+            border: none;
+            width: 20px; height: 20px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 10px;
+        }
+
+        /* Platform Selectors */
+        .platform-selector { margin-bottom: 2rem; }
+        .selector-label { font-size: 0.85rem; font-weight: 700; color: #94a3b8; text-transform: uppercase; margin-bottom: 10px; display: block; }
+        .platform-icons { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+        
+        .platform-check {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            opacity: 0.4;
+            transition: var(--transition);
+        }
+        .platform-check:hover { opacity: 0.8; }
+        .platform-check.active { opacity: 1; transform: scale(1.1); }
+        
+        .p-circle {
+            width: 45px; height: 45px;
+            border-radius: 50%;
+            background: #eee;
+            display: flex; align-items: center; justify-content: center;
+            color: #555;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            transition: var(--transition);
+        }
+        /* Platform Specific Colors (Active State) */
+        .platform-check[data-p="facebook"].active .p-circle { background: #1877F2; color: white; box-shadow: 0 4px 10px rgba(24, 119, 242, 0.3); }
+        .platform-check[data-p="instagram"].active .p-circle { background: #E4405F; color: white; box-shadow: 0 4px 10px rgba(228, 64, 95, 0.3); }
+        .platform-check[data-p="tiktok"].active .p-circle { background: #000000; color: white; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+        .platform-check[data-p="youtube"].active .p-circle { background: #FF0000; color: white; box-shadow: 0 4px 10px rgba(255, 0, 0, 0.3); }
+        .platform-check[data-p="x"].active .p-circle { background: #000000; color: white; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+
+        .p-name { font-size: 0.75rem; font-weight: 600; color: #64748b; }
+
+        /* Publish Button */
+        .publish-btn {
+            width: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(46, 204, 113, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: var(--transition);
+        }
+        .publish-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(46, 204, 113, 0.5); }
+
+        /* --- Link Tree Grid --- */
+        .link-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; }
+        .social-card {
+            background: white;
+            padding: 1.2rem;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+            color: var(--secondary-color);
+            font-weight: 600;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.04);
+            transition: var(--transition);
+            border: 1px solid #f1f5f9;
+        }
+        .social-card:hover { transform: translateY(-3px); box-shadow: 0 10px 15px rgba(0,0,0,0.05); }
+        .social-card i { font-size: 1.4rem; }
+
+        /* Platform border accents */
+        .sc-yt { border-left: 5px solid #FF0000; }
+        .sc-fb { border-left: 5px solid #1877F2; }
+        .sc-tt { border-left: 5px solid #000; }
+        .sc-ig { border-left: 5px solid #E4405F; }
+        .sc-x { border-left: 5px solid #000; }
+
+        /* --- Contact --- */
+        .contact-box {
+            background: var(--secondary-color);
+            color: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin-top: 3rem;
+            text-align: center;
+        }
+        .contact-link { color: white; text-decoration: none; border-bottom: 1px dotted rgba(255,255,255,0.4); }
+
+        /* --- Footer --- */
+        footer { margin-top: 3rem; color: #94a3b8; font-size: 0.85rem; }
+
+        /* --- Custom Toast Notification --- */
+        #toast-container {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .toast {
+            background: rgba(44, 62, 80, 0.95);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: slideUp 0.3s ease-out;
+        }
+        @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+        /* Mobile Responsive */
+        @media (max-width: 480px) {
+            .hero { padding: 2rem 1.5rem; }
+            .section-title { font-size: 1.2rem; }
+            .p-circle { width: 40px; height: 40px; font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo"><i class="fas fa-check-circle" style="color:var(--primary-color)"></i> HR <span>HOPE</span></div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="profile-wrapper">
+                <img src="https://z-cdn-media.chatglm.cn/files/ed712168-840e-46e4-a9b0-4e91b807d2da.png?auth_key=1868167284-e20f5edc61b541a99be5c4dec5da24f0-0-f8322b02656ceccd211f9a839d65d8e1" 
+                     alt="HR Hope" class="profile-img">
+            </div>
+            <h1>Mr. Hope</h1>
+            <p class="tagline">"Hoping for the best & spreading positive vibes"</p>
+            
+            <div class="hero-actions">
+                <button class="btn btn-primary" onclick="openAllLinks()">
+                    <i class="fas fa-user-plus"></i> Follow Me Everywhere
+                </button>
+                <button class="btn btn-secondary" onclick="shareSite()">
+                    <i class="fas fa-share-alt"></i> Share Profile
+                </button>
+            </div>
+        </section>
+
+        <!-- Viral Content Studio -->
+        <section class="studio-section">
+            <div class="section-title">
+                <i class="fas fa-rocket"></i>
+                <h2>Viral Studio</h2>
+            </div>
+            <p style="color:#666; font-size:0.9rem; margin-bottom:1.5rem;">
+                Create content here. We'll attach viral hashtags automatically to boost your reach.
+            </p>
+
+            <!-- 1. Text Input -->
+            <div class="input-group">
+                <textarea id="postText" class="post-input" placeholder="What's happening? Type your caption here..."></textarea>
+            </div>
+
+            <!-- 2. Upload Video/Photo Button -->
+            <div class="input-group">
+                <label class="upload-area" id="dropZone">
+                    <input type="file" id="fileInput" multiple accept="image/*,video/*">
+                    <div class="upload-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                    <div class="upload-text"><strong>Click to Upload</strong> or drag video/photo here</div>
+                </label>
+                <!-- Previews will appear here -->
+                <div id="previewContainer" class="preview-grid"></div>
+            </div>
+
+            <!-- 3. Select Platforms -->
+            <div class="platform-selector">
+                <span class="selector-label">Select Platforms to Post To:</span>
+                <div class="platform-icons">
+                    <div class="platform-check active" data-p="facebook" onclick="togglePlatform(this)">
+                        <div class="p-circle"><i class="fab fa-facebook-f"></i></div>
+                        <span class="p-name">Facebook</span>
+                    </div>
+                    <div class="platform-check active" data-p="instagram" onclick="togglePlatform(this)">
+                        <div class="p-circle"><i class="fab fa-instagram"></i></div>
+                        <span class="p-name">Instagram</span>
+                    </div>
+                    <div class="platform-check active" data-p="tiktok" onclick="togglePlatform(this)">
+                        <div class="p-circle"><i class="fab fa-tiktok"></i></div>
+                        <span class="p-name">TikTok</span>
+                    </div>
+                    <div class="platform-check active" data-p="youtube" onclick="togglePlatform(this)">
+                        <div class="p-circle"><i class="fab fa-youtube"></i></div>
+                        <span class="p-name">YouTube</span>
+                    </div>
+                    <div class="platform-check active" data-p="x" onclick="togglePlatform(this)">
+                        <div class="p-circle"><i class="fab fa-x-twitter"></i></div>
+                        <span class="p-name">X</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. Post Button -->
+            <button class="publish-btn" onclick="goViral()">
+                <i class="fas fa-paper-plane"></i> Post to Selected Platforms
+            </button>
+        </section>
+
+        <!-- Link Section -->
+        <section>
+            <div class="link-grid">
+                <a href="https://www.youtube.com/@mrhope05" target="_blank" class="social-card sc-yt">
+                    <i class="fab fa-youtube" style="color:#FF0000"></i> <span>YouTube</span>
+                </a>
+                <a href="https://www.facebook.com/kevine.nyangila" target="_blank" class="social-card sc-fb">
+                    <i class="fab fa-facebook-f" style="color:#1877F2"></i> <span>Facebook</span>
+                </a>
+                <a href="https://www.tiktok.com/@mrhope05" target="_blank" class="social-card sc-tt">
+                    <i class="fab fa-tiktok"></i> <span>TikTok</span>
+                </a>
+                <a href="https://www.instagram.com/kevine_nyangila" target="_blank" class="social-card sc-ig">
+                    <i class="fab fa-instagram" style="color:#E4405F"></i> <span>Instagram</span>
+                </a>
+                <a href="https://www.x.com/ONyangila99940" target="_blank" class="social-card sc-x">
+                    <i class="fab fa-x-twitter"></i> <span>X (Twitter)</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section class="contact-box">
+            <h3>Contact Management</h3>
+            <div style="margin-top:15px; display:flex; justify-content:center; gap:20px; flex-wrap:wrap;">
+                <a href="tel:0707831904" class="contact-link"><i class="fas fa-phone"></i> 0707831904</a>
+                <a href="mailto:optimisticnyangila@gmail.com" class="contact-link"><i class="fas fa-envelope"></i> Email Me</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 HR HOPE. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Toast Container -->
+    <div id="toast-container"></div>
+
+    <script>
+        // --- 1. State Management ---
+        let selectedFiles = [];
+
+        // --- 2. Platform Toggling ---
+        function togglePlatform(el) {
+            el.classList.toggle('active');
+        }
+
+        // --- 3. File Handling & Preview ---
+        const fileInput = document.getElementById('fileInput');
+        const previewContainer = document.getElementById('previewContainer');
+
+        fileInput.addEventListener('change', (e) => {
+            const newFiles = Array.from(e.target.files);
+            selectedFiles = [...selectedFiles, ...newFiles];
+            renderPreviews();
+            // Reset input so same file can be selected again if deleted
+            fileInput.value = '';
+        });
+
+        function renderPreviews() {
+            previewContainer.innerHTML = '';
+            selectedFiles.forEach((file, index) => {
+                const div = document.createElement('div');
+                div.className = 'preview-item';
+                
+                let mediaElem;
+                if (file.type.startsWith('image/')) {
+                    mediaElem = document.createElement('img');
+                } else if (file.type.startsWith('video/')) {
+                    mediaElem = document.createElement('video');
+                }
+                
+                mediaElem.src = URL.createObjectURL(file);
+                div.appendChild(mediaElem);
+
+                // Remove button
+                const btn = document.createElement('button');
+                btn.className = 'remove-file';
+                btn.innerHTML = '&times;';
+                btn.onclick = (e) => {
+                    e.stopPropagation(); // Prevent opening file dialog
+                    selectedFiles.splice(index, 1);
+                    renderPreviews();
+                };
+                div.appendChild(btn);
+
+                previewContainer.appendChild(div);
+            });
+        }
+
+        // --- 4. Viral Logic (The Core) ---
+        async function goViral() {
+            const textInput = document.getElementById('postText').value;
+            const activePlatforms = document.querySelectorAll('.platform-check.active');
+            
+            // Validation
+            if (activePlatforms.length === 0) {
+                showToast("Please select at least one platform!", "error");
+                return;
+            }
+
+            // Auto-append Hashtags
+            const viralTags = "\n\n#HRHOPE #MrHope #Viral #Trending #FYP #Kenya #ContentCreator #HopingForTheBest";
+            const finalText = textInput + viralTags;
+
+            // --- Communication Logic: Native Share API ---
+            // This communicates with the phone OS to open the specific app with the file attached.
+            if (navigator.share) {
+                try {
+                    const shareData = {
+                        title: 'HR HOPE - Viral Content',
+                        text: finalText,
+                        url: 'https://www.youtube.com/@mrhope05' // Default link
+                    };
+
+                    // If files are selected and supported, attach them
+                    if (selectedFiles.length > 0 && navigator.canShare && navigator.canShare({ files: selectedFiles })) {
+                        shareData.files = selectedFiles;
+                    }
+
+                    await navigator.share(shareData);
+                    showToast("Success! Opening selected apps...");
+                } catch (err) {
+                    console.log("Share canceled or failed", err);
+                }
+            } 
+            // --- Fallback for Desktop (No Native Share) ---
+            else {
+                // Copy text to clipboard
+                navigator.clipboard.writeText(finalText).then(() => {
+                    showToast("Text & Hashtags copied! Opening apps now...");
+                    
+                    // Open each selected platform in a new tab
+                    activePlatforms.forEach((p) => {
+                        const type = p.getAttribute('data-p');
+                        let url = "";
+                        
+                        // Direct URLs since we can't inject files on desktop without APIs
+                        if (type === 'facebook') url = "https://www.facebook.com/kevine.nyangila";
+                        if (type === 'tiktok') url = "https://www.tiktok.com/@mrhope05";
+                        if (type === 'instagram') url = "https://www.instagram.com/kevine_nyangila";
+                        if (type === 'youtube') url = "https://www.youtube.com/@mrhope05";
+                        if (type === 'x') url = "https://www.x.com/ONyangila99940";
+
+                        setTimeout(() => window.open(url, '_blank'), 500);
+                    });
+                });
+            }
+        }
+
+        // --- 5. Helper: Open All Links ---
+        function openAllLinks() {
+            const links = [
+                "https://www.youtube.com/@mrhope05",
+                "https://www.facebook.com/kevine.nyangila",
+                "https://www.tiktok.com/@mrhope05",
+                "https://www.instagram.com/kevine_nyangila",
+                "https://www.x.com/ONyangila99940"
+            ];
+            showToast("Opening all your profiles...");
+            let delay = 300;
+            links.forEach(link => {
+                setTimeout(() => window.open(link, '_blank'), delay);
+                delay += 500;
+            });
+        }
+
+        // --- 6. Helper: Share Site ---
+        async function shareSite() {
+            if (navigator.share) {
+                try {
+                    await navigator.share({
+                        title: 'Check out HR HOPE',
+                        text: 'Mr. Hope is hoping for the best! Follow his journey.',
+                        url: window.location.href
+                    });
+                } catch (err) { console.log('Closed'); }
+            } else {
+                navigator.clipboard.writeText(window.location.href);
+                showToast("Link copied to clipboard!");
+            }
+        }
+
+        // --- 7. Helper: Toast Notification ---
+        function showToast(message, type = 'success') {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            
+            let icon = type === 'error' ? '<i class="fas fa-exclamation-circle"></i>' : '<i class="fas fa-check-circle"></i>';
+            toast.innerHTML = `${icon} <span>${message}</span>`;
+            
+            container.appendChild(toast);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateY(20px)';
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
