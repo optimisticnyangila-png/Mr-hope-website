@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UniVerse - Group Social & Financial Ecosystem</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --secondary: #64748b;
+            --success: #10b981;
+            --danger: #ef4444;
+            --background: #f1f5f9;
+            --surface: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--text-main);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- Utilities --- */
+        .hidden { display: none !important; }
+        .flex { display: flex; }
+        .flex-col { flex-direction: column; }
+        .items-center { align-items: center; }
+        .justify-between { justify-content: space-between; }
+        .gap-2 { gap: 0.5rem; }
+        .gap-4 { gap: 1rem; }
+        .p-4 { padding: 1rem; }
+        .mt-4 { margin-top: 1rem; }
+        .text-sm { font-size: 0.875rem; }
+        .font-bold { font-weight: 700; }
+        .text-primary { color: var(--primary); }
+        .text-success { color: var(--success); }
+        .text-danger { color: var(--danger); }
+        .w-full { width: 100%; }
+
+        /* --- Components --- */
+        button {
+            cursor: pointer;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            border: none;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .btn-primary { background-color: var(--primary); color: white; }
+        .btn-primary:hover { background-color: var(--primary-dark); }
+        .btn-outline { background-color: transparent; border: 1px solid var(--primary); color: var(--primary); }
+        .btn-outline:hover { background-color: #eff6ff; }
+        .btn-danger { background-color: var(--danger); color: white; }
+
+        input, select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            outline: none;
+        }
+        
+        input:focus { border-color: var(--primary); box-shadow: 0 0 0 2px rgba(37,99,235,0.2); }
+
+        .card {
+            background: var(--surface);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 1.5rem;
+        }
+
+        /* --- Layout --- */
+        #app-container {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        /* Sidebar */
+        aside {
+            width: 260px;
+            background: var(--surface);
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            padding: 1.5rem;
+        }
+
+        .brand {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-item {
+            padding: 0.75rem 1rem;
+            margin-bottom: 0.5rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            color: var(--text-muted);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            background-color: #eff6ff;
+            color: var(--primary);
+        }
+
+        /* Main Content */
+        main {
+            flex: 1;
+            overflow-y: auto;
+            padding: 2rem;
+            position: relative;
+        }
+
+        /* Auth Screens */
+        .auth-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--background);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .auth-box {
+            width: 100%;
+            max-width: 450px;
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+        }
+
+        /* Dashboard Widgets */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            border-left: 4px solid var(--primary);
+            box-shadow: var(--shadow);
+        }
+
+        .stat-value { font-size: 1.5rem; font-weight: bold; margin-top: 0.5rem; }
+        .stat-label { font-size: 0.875rem; color: var(--text-muted); }
+
+        /* Tables */
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 1rem; text-align: left; border-bottom: 1px solid var(--border); }
+        th { color: var(--text-muted); font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em; }
+        tr:last-child td { border-bottom: none; }
+
+        /* Chat */
+        .chat-container {
+            display: flex;
+            flex-direction: column;
+            height: 500px;
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            background: white;
+        }
+        .chat-messages { flex: 1; padding: 1rem; overflow-y: auto; display: flex; flex-direction: column; gap: 0.75rem; }
+        .message { padding: 0.5rem 1rem; border-radius: 1rem; max-width: 70%; font-size: 0.9rem; }
+        .msg-in { align-self: flex-start; background: #f1f5f9; }
+        .msg-out { align-self: flex-end; background: var(--primary); color: white; }
+        .chat-input { padding: 1rem; border-top: 1px solid var(--border); display: flex; gap: 0.5rem; }
+
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s;
+        }
+        .modal-overlay.open { opacity: 1; pointer-events: auto; }
+        .modal {
+            background: white;
+            width: 90%;
+            max-width: 500px;
+            border-radius: 1rem;
+            padding: 2rem;
+            transform: translateY(20px);
+            transition: transform 0.2s;
+        }
+        .modal-overlay.open .modal { transform: translateY(0); }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #1f2937;
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+            transform: translateY(100px);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 3000;
+        }
+        .toast.show { transform: translateY(0); }
+
+        /* File Icon */
+        .file-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.75rem;
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            margin-bottom: 0.5rem;
+            background: white;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">Action Successful</div>
+
+    <!-- Auth Screens -->
+    <div id="auth-section" class="auth-container">
+        <!-- Login -->
+        <div id="login-view" class="auth-box">
+            <h2 class="text-primary" style="margin-bottom: 0.5rem;">UniVerse Login</h2>
+            <p class="text-muted" style="margin-bottom: 2rem;">Access your group or member portal</p>
+            
+            <div class="flex gap-2" style="margin-bottom: 1rem;">
+                <button class="btn-outline w-full text-sm" onclick="switchAuthMode('login-group')">Group Admin</button>
+                <button class="btn-outline w-full text-sm" onclick="switchAuthMode('login-member')">Member</button>
+            </div>
+
+            <form id="login-form" onsubmit="handleLogin(event)">
+                <div id="group-login-fields">
+                    <label class="text-sm font-bold">Group Name</label>
+                    <input type="text" id="login-group-name" placeholder="e.g. Tech Innovators">
+                </div>
+                <div id="member-login-fields" class="hidden">
+                    <label class="text-sm font-bold">Email or Phone</label>
+                    <input type="text" id="login-user-id" placeholder="member@example.com">
+                </div>
+                
+                <label class="text-sm font-bold">Password</label>
+                <input type="password" id="login-password" placeholder="••••••••" required>
+                
+                <button type="submit" class="btn-primary w-full">Sign In</button>
+                
+                <p class="text-sm text-center mt-4">
+                    New Organization? <a href="#" onclick="showRegister()" class="text-primary">Register Group</a>
+                </p>
+            </form>
+        </div>
+
+        <!-- Register Group -->
+        <div id="register-view" class="auth-box hidden">
+            <h2 class="text-primary" style="margin-bottom: 0.5rem;">Register Organization</h2>
+            <p class="text-muted" style="margin-bottom: 1rem;">Join the ecosystem connecting billions.</p>
+            
+            <div class="card" style="background: #f8fafc; padding: 1rem; margin-bottom: 1rem;">
+                <p class="text-sm"><strong>Registration Fee:</strong> $50.00</p>
+                <p class="text-sm text-muted">Transfer to Account: <span class="font-bold text-main">01102084853001</span></p>
+                <p class="text-xs text-muted" style="margin-top:0.25rem">*Account details are confidential and secure.</p>
+            </div>
+
+            <form onsubmit="handleRegister(event)">
+                <label class="text-sm font-bold">Group Name</label>
+                <input type="text" id="reg-group-name" required>
+                
+                <label class="text-sm font-bold">Admin Name</label>
+                <input type="text" id="reg-admin-name" required>
+                
+                <label class="text-sm font-bold">Admin Email</label>
+                <input type="email" id="reg-admin-email" required>
+
+                <label class="text-sm font-bold">Transaction ID (Bank Payment)</label>
+                <input type="text" id="reg-txn-id" placeholder="Enter bank reference number" required>
+                <p class="text-xs text-muted" style="margin-bottom: 1rem; margin-top:-0.5rem">Verify payment to account 01102084853001</p>
+                
+                <label class="text-sm font-bold">Create Password</label>
+                <input type="password" id="reg-password" required>
+
+                <button type="submit" class="btn-primary w-full">Create Group Account</button>
+                <button type="button" class="btn-outline w-full mt-4" onclick="showLogin()">Back to Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main Dashboard Layout -->
+    <div id="app-container" class="hidden">
+        <!-- Sidebar -->
+        <aside>
+            <div class="brand">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                UniVerse
+            </div>
+            
+            <div class="text-sm font-bold text-muted" style="margin-bottom: 0.5rem; padding-left: 1rem;">MENU</div>
+            
+            <!-- Group Menu -->
+            <div id="group-menu">
+                <div class="nav-item active" onclick="navigate('dashboard')">
+                    <span>📊</span> Dashboard
+                </div>
+                <div class="nav-item" onclick="navigate('members')">
+                    <span>👥</span> Members
+                </div>
+                <div class="nav-item" onclick="navigate('finances')">
+                    <span>💰</span> Finances & Bank
+                </div>
+                <div class="nav-item" onclick="navigate('documents')">
+                    <span>📁</span> Documents
+                </div>
+                <div class="nav-item" onclick="navigate('meetings')">
+                    <span>📹</span> Meetings & Chat
+                </div>
+            </div>
+
+            <!-- Member Menu -->
+            <div id="member-menu" class="hidden">
+                <div class="nav-item active" onclick="navigate('member-dashboard')">
+                    <span>👤</span> My Profile
+                </div>
+                <div class="nav-item" onclick="navigate('member-wallet')">
+                    <span>💳</span> My Wallet
+                </div>
+            </div>
+
+            <div style="margin-top: auto;">
+                <div class="card" style="padding: 1rem; background: #f8fafc; border: 1px solid var(--border);">
+                    <p class="text-xs text-muted">Logged in as:</p>
+                    <p class="font-bold text-sm" id="current-user-display">User</p>
+                    <button class="text-danger text-sm mt-4" onclick="logout()" style="background:none; border:none; padding:0;">Log Out</button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main id="main-content">
+            
+            <!-- GROUP: Dashboard -->
+            <section id="page-dashboard" class="page-section">
+                <div class="flex justify-between items-center mb-4">
+                    <h1 class="font-bold text-2xl">Group Overview</h1>
+                    <span class="text-sm text-muted">Group ID: <span id="dash-group-id">--</span></span>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-label">Total Members</div>
+                        <div class="stat-value" id="dash-total-members">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Group Balance</div>
+                        <div class="stat-value text-success" id="dash-balance">$0.00</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Pending Fees</div>
+                        <div class="stat-value text-danger" id="dash-pending">$0.00</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Active Meetings</div>
+                        <div class="stat-value">1</div>
+                    </div>
+                </div>
+
+                <div class="flex gap-4" style="flex-wrap: wrap;">
+                    <div class="card" style="flex: 2;">
+                        <h3 class="font-bold mb-4">Recent Activity</h3>
+                        <div id="activity-log">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+                    <div class="card" style="flex: 1;">
+                        <h3 class="font-bold mb-4">Quick Actions</h3>
+                        <button class="btn-primary w-full mb-2" onclick="openModal('add-member-modal')">+ Add Member</button>
+                        <button class="btn-outline w-full mb-2" onclick="openModal('deposit-modal')">Record Contribution</button>
+                        <button class="btn-outline w-full" onclick="openModal('meeting-modal')">Start Video Meeting</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- GROUP: Members -->
+            <section id="page-members" class="page-section hidden">
+                <h1 class="font-bold text-2xl mb-4">Member Management</h1>
+                <div class="card">
+                    <input type="text" placeholder="Search members by name or ID..." onkeyup="filterMembers(this.value)">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>ID Number</th>
+                                <th>Phone</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="members-table-body">
+                            <!-- JS Populated -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- GROUP: Finances -->
+            <section id="page-finances" class="page-section hidden">
+                <h1 class="font-bold text-2xl mb-4">Financial Center</h1>
+                
+                <div class="card" style="background: #1e293b; color: white;">
+                    <p class="text-sm text-gray-400">Connected Group Bank Account</p>
+                    <h2 class="text-xl font-bold tracking-widest mt-2">•••• •••• •••• 5301</h2>
+                    <p class="text-xs text-gray-400 mt-2">Account managed securely via UniVerse Gateway</p>
+                </div>
+
+                <div class="flex gap-4 mt-4">
+                    <div class="card w-full">
+                        <h3 class="font-bold mb-2">Money Transfer</h3>
+                        <p class="text-sm text-muted mb-4">Transfer group funds to external accounts or internal members.</p>
+                        <form onsubmit="handleTransfer(event)">
+                            <input type="text" placeholder="Recipient Account / Name" required>
+                            <input type="number" placeholder="Amount" required>
+                            <select>
+                                <option>Bank Transfer (External)</option>
+                                <option>Internal Member Payroll</option>
+                            </select>
+                            <button class="btn-success w-full" style="background-color: var(--success); color: white;">Send Funds</button>
+                        </form>
+                    </div>
+
+                    <div class="card w-full">
+                        <h3 class="font-bold mb-2">Transaction History</h3>
+                        <div style="max-height: 200px; overflow-y: auto;" id="finance-history-list">
+                            <!-- Populated -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- GROUP: Documents -->
+            <section id="page-documents" class="page-section hidden">
+                <div class="flex justify-between items-center mb-4">
+                    <h1 class="font-bold text-2xl">Document Repository</h1>
+                    <button class="btn-primary" onclick="document.getElementById('file-upload').click()">Upload Document</button>
+                    <input type="file" id="file-upload" class="hidden" onchange="handleFileUpload(this)">
+                </div>
+                <div class="card">
+                    <div id="document-list">
+                        <!-- Populated -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- GROUP: Meetings & Chat -->
+            <section id="page-meetings" class="page-section hidden">
+                <h1 class="font-bold text-2xl mb-4">Communication Hub</h1>
+                
+                <div class="flex gap-4" style="height: 600px;">
+                    <!-- Chat -->
+                    <div class="card" style="flex: 1; display: flex; flex-direction: column; padding: 0; overflow: hidden;">
+                        <div style="padding: 1rem; border-bottom: 1px solid var(--border); background: #f8fafc;">
+                            <strong>Group Chat</strong>
+                            <p class="text-xs text-muted">All members online</p>
+                        </div>
+                        <div class="chat-messages" id="group-chat-messages">
+                            <div class="message msg-in">Welcome to the group chat!</div>
+                        </div>
+                        <div class="chat-input">
+                            <input type="text" id="chat-input-field" placeholder="Type a message..." style="margin-bottom: 0;">
+                            <button class="btn-primary" onclick="sendChatMessage()">Send</button>
+                        </div>
+                    </div>
+
+                    <!-- Meetings -->
+                    <div style="flex: 1;">
+                        <div class="card">
+                            <h3 class="font-bold mb-4">Active Sessions</h3>
+                            <div id="meeting-link-area" class="hidden">
+                                <div class="p-4 mb-4" style="background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 0.5rem;">
+                                    <p class="text-sm font-bold text-success">Meeting Live!</p>
+                                    <p class="text-sm">Link: <a href="#" class="text-primary" id="active-meeting-link">meet.universe.com/xyz</a></p>
+                                </div>
+                            </div>
+                            <button class="btn-outline w-full" onclick="openModal('meeting-modal')">Generate New Meeting Link</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- MEMBER: Dashboard -->
+            <section id="page-member-dashboard" class="page-section hidden">
+                <div class="card flex items-center gap-4">
+                    <img src="https://picsum.photos/seed/user/80/80" style="border-radius: 50%;" alt="Profile">
+                    <div>
+                        <h2 class="text-2xl font-bold" id="mem-dash-name">User Name</h2>
+                        <p class="text-muted" id="mem-dash-id">ID: 12345</p>
+                        <span class="text-sm" style="background: #dbeafe; color: var(--primary); padding: 2px 8px; border-radius: 4px;">Active Member</span>
+                    </div>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-label">My Contributions</div>
+                        <div class="stat-value text-primary" id="mem-dash-contrib">$0.00</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Group Dues</div>
+                        <div class="stat-value" id="mem-dash-dues">$0.00</div>
+                    </div>
+                </div>
+            </section>
+
+             <!-- MEMBER: Wallet -->
+             <section id="page-member-wallet" class="page-section hidden">
+                <h1 class="font-bold text-2xl mb-4">My Transactions</h1>
+                <div class="card">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Description</th>
+                                <th>Type</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody id="mem-tx-body">
+                            <!-- Populated -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- MODALS -->
+
+    <!-- Add Member Modal -->
+    <div id="add-member-modal" class="modal-overlay">
+        <div class="modal">
+            <h3 class="text-xl font-bold mb-4">Add New Member</h3>
+            <form onsubmit="handleAddMember(event)">
+                <label class="text-sm font-bold">First Name</label>
+                <input type="text" id="new-mem-fname" required>
+                <label class="text-sm font-bold">Last Name</label>
+                <input type="text" id="new-mem-lname" required>
+                <label class="text-sm font-bold">ID Number</label>
+                <input type="text" id="new-mem-id" required>
+                <label class="text-sm font-bold">Phone Number</label>
+                <input type="tel" id="new-mem-phone" required>
+                
+                <div class="flex gap-2 justify-end mt-4">
+                    <button type="button" class="btn-outline" onclick="closeModal('add-member-modal')">Cancel</button>
+                    <button type="submit" class="btn-primary">Save Member</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Meeting Modal -->
+    <div id="meeting-modal" class="modal-overlay">
+        <div class="modal">
+            <h3 class="text-xl font-bold mb-4">Start Online Meeting</h3>
+            <p class="text-sm text-muted mb-4">Create a secure video/audio link for members.</p>
+            
+            <div class="flex gap-2 mb-4">
+                <button class="btn-primary w-full">Video Conference</button>
+                <button class="btn-outline w-full">Audio Only</button>
+            </div>
+            
+            <div class="flex gap-2 justify-end mt-4">
+                <button type="button" class="btn-outline" onclick="closeModal('meeting-modal')">Cancel</button>
+                <button type="button" class="btn-primary" onclick="generateMeetingLink()">Generate Link</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Deposit Modal -->
+    <div id="deposit-modal" class="modal-overlay">
+        <div class="modal">
+            <h3 class="text-xl font-bold mb-4">Record Contribution</h3>
+            <form onsubmit="handleDeposit(event)">
+                <label class="text-sm font-bold">Payer Name</label>
+                <input type="text" required>
+                <label class="text-sm font-bold">Amount ($)</label>
+                <input type="number" id="deposit-amount" required>
+                <label class="text-sm font-bold">Payment Method</label>
+                <select>
+                    <option>Cash Deposit</option>
+                    <option>Bank Transfer to Group Account</option>
+                    <option>Mobile Money</option>
+                </select>
+                <div class="flex gap-2 justify-end mt-4">
+                    <button type="button" class="btn-outline" onclick="closeModal('deposit-modal')">Cancel</button>
+                    <button type="submit" class="btn-primary">Record</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // --- STATE MANAGEMENT ---
+        // Simulating a massive backend database in memory
+        const DB = {
+            groups: [
+                {
+                    id: 'G-102938',
+                    name: 'SOUTH KABUOCH YOUTHS',
+                    admin: 'Kevine nyangila',
+                    bankAccount: '01102084853002', // Confidential Account used for platform fees too in this demo
+                    balance: 54000.00,
+                    members: [
+                        { fname: 'KEVINE', lname: 'NYANGILA', id: 'ID-001', phone: '+254116284473', contributions: 500 },
+                        { fname: 'Sharon', lname: 'Connor', id: 'ID-002', phone: '+254707831904', contributions: 1200 }
+                    ],
+                    transactions: [
+                        { date: '2025-10-01', desc: 'Initial Deposit', type: 'Credit', amount: 50000 },
+                        { date: '2025-10-05', desc: 'Registration Fee Payment', type: 'Debit', amount: 50 }
+                    ],
+                    documents: [
+                        { name: 'Constitution.pdf', size: '2.4 MB', date: '2025-09-15' },
+                        { name: 'Meeting_Minutes_Oct.pdf', size: '1.1 MB', date: '2023-10-02' }
+                    ],
+                    chat: [
+                        { user: 'Admin', text: 'We are greatful to see you with us!' }
+                    ]
+                }
+            ],
+            // Platform Account for registration fees
+            platformBankAccount: '01102084853001'
+        };
+
+        let currentUser = null; // { type: 'group' | 'member', data: object }
+        let activeGroup = null; // If logged in as member, this is the group object
+
+        // --- AUTH LOGIC ---
+
+        function switchAuthMode(mode) {
+            if(mode === 'login-group') {
+                document.getElementById('group-login-fields').classList.remove('hidden');
+                document.getElementById('member-login-fields').classList.add('hidden');
+            } else {
+                document.getElementById('group-login-fields').classList.add('hidden');
+                document.getElementById('member-login-fields').classList.remove('hidden');
+            }
+        }
+
+        function showRegister() {
+            document.getElementById('login-view').classList.add('hidden');
+            document.getElementById('register-view').classList.remove('hidden');
+        }
+
+        function showLogin() {
+            document.getElementById('register-view').classList.add('hidden');
+            document.getElementById('login-view').classList.remove('hidden');
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            const groupName = document.getElementById('login-group-name').value;
+            const userId = document.getElementById('login-user-id').value;
+            const pass = document.getElementById('login-password').value;
+
+            // Simplified auth for demo
+            if (groupName) {
+                // Admin Login
+                const group = DB.groups.find(g => g.name.toLowerCase() === groupName.toLowerCase());
+                if (group) {
+                    currentUser = { type: 'group', data: group };
+                    initializeDashboard();
+                } else {
+                    showToast('Group not found');
+                }
+            } else if (userId) {
+                // Member Login (Simulated: if ID matches any member in first group)
+                const group = DB.groups[0]; 
+                const member = group.members.find(m => m.id === userId);
+                
+                if (member) {
+                    currentUser = { type: 'member', data: member, group: group };
+                    activeGroup = group;
+                    initializeDashboard();
+                } else {
+                    // Demo fallback: allow specific logins
+                     if(userId === 'ID-001') {
+                        currentUser = { type: 'member', data: group.members[0], group: group };
+                        activeGroup = group;
+                        initializeDashboard();
+                     } else {
+                        showToast('Member not found');
+                     }
+                }
+            }
+        }
+
+        function handleRegister(e) {
+            e.preventDefault();
+            const groupName = document.getElementById('reg-group-name').value;
+            const txnId = document.getElementById('reg-txn-id').value;
+
+            // Simulate backend verification of payment to 01102084853001
+            if (txnId.length < 5) {
+                showToast("Invalid Transaction ID. Please check bank transfer details.");
+                return;
+            }
+
+            const newGroup = {
+                id: 'G-' + Math.floor(Math.random() * 1000000),
+                name: groupName,
+                admin: document.getElementById('reg-admin-name').value,
+                bankAccount: 'GROUP-' + Math.floor(Math.random() * 1000000000000),
+                balance: 0,
+                members: [],
+                transactions: [
+                    { date: new Date().toISOString().split('T')[0], desc: 'Platform Registration Fee', type: 'Debit', amount: 50 }
+                ],
+                documents: [],
+                chat: []
+            };
+
+            DB.groups.push(newGroup);
+            showToast("Registration Verified! Account Created.");
+            showLogin();
+        }
+
+        function logout() {
+            currentUser = null;
+            activeGroup = null;
+            document.getElementById('app-container').classList.add('hidden');
+            document.getElementById('auth-section').classList.remove('hidden');
+            // Reset Forms
+            document.getElementById('login-form').reset();
+        }
+
+        // --- DASHBOARD LOGIC ---
+
+        function initializeDashboard() {
+            document.getElementById('auth-section').classList.add('hidden');
+            document.getElementById('app-container').classList.remove('hidden');
+            
+            document.getElementById('current-user-display').textContent = 
+                currentUser.type === 'group' ? currentUser.data.name : currentUser.data.fname + ' ' + currentUser.data.lname;
+
+            if (currentUser.type === 'group') {
+                document.getElementById('group-menu').classList.remove('hidden');
+                document.getElementById('member-menu').classList.add('hidden');
+                updateGroupDashboard();
+                navigate('dashboard');
+            } else {
+                document.getElementById('group-menu').classList.add('hidden');
+                document.getElementById('member-menu').classList.remove('hidden');
+                updateMemberDashboard();
+                navigate('member-dashboard');
+            }
+        }
+
+        function navigate(pageId) {
+            // Hide all sections
+            document.querySelectorAll('.page-section').forEach(el => el.classList.add('hidden'));
+            // Remove active class from nav
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+
+            // Show target
+            const target = document.getElementById('page-' + pageId);
+            if (target) target.classList.remove('hidden');
+
+            // Refresh specific data
+            if (pageId === 'members') renderMembersTable();
+            if (pageId === 'finances') renderFinanceHistory();
+            if (pageId === 'documents') renderDocuments();
+            if (pageId === 'meetings') renderChat();
+            
+            // Highlight nav (simple approximation)
+            event.currentTarget?.classList.add('active');
+        }
+
+        // --- GROUP FEATURES ---
+
+        function updateGroupDashboard() {
+            const group = currentUser.data;
+            document.getElementById('dash-group-id').textContent = group.id;
+            document.getElementById('dash-total-members').textContent = group.members.length;
+            document.getElementById('dash-balance').textContent = '$' + group.balance.toLocaleString();
+            
+            // Activity Log Logic
+            const logContainer = document.getElementById('activity-log');
+            logContainer.innerHTML = '';
+            const activities = group.transactions.slice(-5).reverse();
+            activities.forEach(tx => {
+                const div = document.createElement('div');
+                div.className = 'flex justify-between p-2 border-b border-gray-100';
+                div.innerHTML = `
+                    <div>
+                        <p class="text-sm font-bold">${tx.desc}</p>
+                        <p class="text-xs text-muted">${tx.date}</p>
+                    </div>
+                    <span class="${tx.type === 'Credit' ? 'text-success' : 'text-danger'} font-bold">
+                        ${tx.type === 'Credit' ? '+' : '-'}$${tx.amount}
+                    </span>
+                `;
+                logContainer.appendChild(div);
+            });
+        }
+
+        function renderMembersTable(filter = '') {
+            const tbody = document.getElementById('members-table-body');
+            tbody.innerHTML = '';
+            currentUser.data.members.forEach(mem => {
+                if (filter && !mem.fname.toLowerCase().includes(filter.toLowerCase())) return;
+                
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${mem.fname} ${mem.lname}</td>
+                    <td>${mem.id}</td>
+                    <td>${mem.phone}</td>
+                    <td><span style="color:green; font-size:0.8rem;">● Active</span></td>
+                    <td><button class="btn-outline text-sm" onclick="showToast('Viewing details for ${mem.fname}')">View</button></td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function filterMembers(val) {
+            renderMembersTable(val);
+        }
+
+        function renderFinanceHistory() {
+            const list = document.getElementById('finance-history-list');
+            list.innerHTML = '';
+            currentUser.data.transactions.slice().reverse().forEach(tx => {
+                const item = document.createElement('div');
+                item.className = 'flex justify-between items-center py-2 border-b';
+                item.innerHTML = `
+                    <div>
+                        <p class="text-sm font-bold">${tx.desc}</p>
+                        <p class="text-xs text-muted">${tx.date}</p>
+                    </div>
+                    <div class="text-right">
+                        <p class="font-bold ${tx.type === 'Credit' ? 'text-success' : ''}">$${tx.amount}</p>
+                    </div>
+                `;
+                list.appendChild(item);
+            });
+        }
+
+        function renderDocuments() {
+            const list = document.getElementById('document-list');
+            list.innerHTML = '';
+            currentUser.data.documents.forEach(doc => {
+                const div = document.createElement('div');
+                div.className = 'file-item';
+                div.innerHTML = `
+                    <div style="background: #e2e8f0; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 4px;">📄</div>
+                    <div class="flex-1">
+                        <p class="font-bold text-sm">${doc.name}</p>
+                        <p class="text-xs text-muted">${doc.size} • ${doc.date}</p>
+                    </div>
+                    <button class="text-primary text-sm">Download</button>
+                `;
+                list.appendChild(div);
+            });
+        }
+
+        // --- CHAT & MEETINGS ---
+
+        function renderChat() {
+            const container = document.getElementById('group-chat-messages');
+            container.innerHTML = '';
+            currentUser.data.chat.forEach(msg => {
+                const div = document.createElement('div');
+                div.className = `message ${msg.user === 'Admin' ? 'msg-out' : 'msg-in'}`;
+                div.textContent = msg.text;
+                container.appendChild(div);
+            });
+            container.scrollTop = container.scrollHeight;
+        }
+
+        function sendChatMessage() {
+            const input = document.getElementById('chat-input-field');
+            const text = input.value.trim();
+            if(!text) return;
+
+            currentUser.data.chat.push({ user: currentUser.data.fname || 'Admin', text: text });
+            input.value = '';
+            renderChat();
+        }
+
+        function generateMeetingLink() {
+            const uuid = Math.random().toString(36).substring(7);
+            const link = `https://meet.universe.com/room/${uuid}`;
+            
+            // Show in UI
+            const area = document.getElementById('meeting-link-area');
+            area.classList.remove('hidden');
+            document.getElementById('active-meeting-link').textContent = link;
+            
+            closeModal('meeting-modal');
+            showToast('Meeting Link Generated');
+            
+            // Log activity
+            currentUser.data.transactions.push({
+                date: new Date().toISOString().split('T')[0],
+                desc: 'Video Meeting Created',
+                type: 'Info',
+                amount: 0
+            });
+        }
+
+        // --- ACTIONS (MEMBERS, MONEY, FILES) ---
+
+        function handleAddMember(e) {
+            e.preventDefault();
+            const newMember = {
+                fname: document.getElementById('new-mem-fname').value,
+                lname: document.getElementById('new-mem-lname').value,
+                id: document.getElementById('new-mem-id').value,
+                phone: document.getElementById('new-mem-phone').value,
+                contributions: 0
+            };
+            currentUser.data.members.push(newMember);
+            showToast('Member Added Successfully');
+            closeModal('add-member-modal');
+            updateGroupDashboard();
+            e.target.reset();
+        }
+
+        function handleDeposit(e) {
+            e.preventDefault();
+            const amount = parseFloat(document.getElementById('deposit-amount').value);
+            currentUser.data.balance += amount;
+            currentUser.data.transactions.push({
+                date: new Date().toISOString().split('T')[0],
+                desc: 'Member Contribution',
+                type: 'Credit',
+                amount: amount
+            });
+            showToast('Contribution Recorded');
+            closeModal('deposit-modal');
+            updateGroupDashboard();
+            e.target.reset();
+        }
+
+        function handleTransfer(e) {
+            e.preventDefault();
+            // Simulating transfer logic
+            showToast('Transfer Initiated to Bank Account');
+            closeModal('deposit-modal'); // reuse or close appropriate modal
+        }
+
+        function handleFileUpload(input) {
+            if (input.files && input.files[0]) {
+                const file = input.files[0];
+                currentUser.data.documents.push({
+                    name: file.name,
+                    size: (file.size / 1024).toFixed(1) + ' KB',
+                    date: new Date().toISOString().split('T')[0]
+                });
+                showToast('Document Uploaded');
+                renderDocuments();
+            }
+        }
+
+        // --- MEMBER FEATURES ---
+
+        function updateMemberDashboard() {
+            const mem = currentUser.data;
+            document.getElementById('mem-dash-name').textContent = `${mem.fname} ${mem.lname}`;
+            document.getElementById('mem-dash-id').textContent = `ID: ${mem.id}`;
+            document.getElementById('mem-dash-contrib').textContent = `$${mem.contributions}`;
+            
+            // Mock transactions for member
+            const tbody = document.getElementById('mem-tx-body');
+            tbody.innerHTML = '';
+            // Create some dummy history based on contributions
+            const txs = [
+                { date: '2023-10-01', desc: 'Initial Join Fee', type: 'Debit', amount: 50 },
+                { date: '2023-10-05', desc: 'Monthly Contribution', type: 'Credit', amount: 100 }
+            ];
+            
+            txs.forEach(tx => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${tx.date}</td>
+                    <td>${tx.desc}</td>
+                    <td class="${tx.type === 'Credit' ? 'text-success' : 'text-danger'}">${tx.type}</td>
+                    <td>$${tx.amount}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        // --- UTILS ---
+
+        function openModal(id) {
+            document.getElementById(id).classList.add('open');
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('open');
+        }
+
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            t.textContent = msg;
+            t.classList.add('show');
+            setTimeout(() => t.classList.remove('show'), 3000);
+        }
+
+        // Initialize with Login view
+        document.getElementById('register-view').classList.add('hidden');
+    </script>
+</body>
+</html>
