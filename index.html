@@ -3,641 +3,1158 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HR HOPE - Hoping for the Best | Official Hub</title>
-    
-    <!-- SEO & Social Meta Tags -->
-    <meta name="description" content="Official hub of HR HOPE (Mr. Hope). Follow on TikTok, YouTube, Instagram, Facebook & X for viral content. Hoping for the best.">
-    <meta name="keywords" content="HR Hope, Mr Hope, Viral, TikTok, YouTube, Kenya, Content Creator, Optimistic">
-    
-    <!-- Open Graph -->
-    <meta property="og:title" content="HR HOPE - Official Hub">
-    <meta property="og:description" content="Connect with HR HOPE on all platforms. Daily viral content, motivation, and entertainment. Hoping for the best!">
-    <meta property="og:image" content="https://z-cdn-media.chatglm.cn/files/ed712168-840e-46e4-a9b0-4e91b807d2da.png?auth_key=1868167284-e20f5edc61b541a99be5c4dec5da24f0-0-f8322b02656ceccd211f9a839d65d8e1">
-    <meta property="og:url" content="https://your-website-url.com">
-    <meta property="og:type" content="profile">
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="HR HOPE - Official Hub">
-    <meta name="twitter:description" content="Follow Mr. Hope everywhere. Viral content and daily motivation.">
-    <meta name="twitter:image" content="https://z-cdn-media.chatglm.cn/files/ed712168-840e-46e4-a9b0-4e91b807d2da.png?auth_key=1868167284-e20f5edc61b541a99be5c4dec5da24f0-0-f8322b02656ceccd211f9a839d65d8e1">
-
-    <!-- FontAwesome & Google Fonts -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
+    <title>NYANGILAK MARKET - AI Powered Shopping</title>
     <style>
-        /* --- CSS Variables --- */
         :root {
-            --primary-color: #2ecc71;
-            --primary-dark: #27ae60;
-            --secondary-color: #2c3e50;
-            --accent-color: #f1c40f; /* Gold/Yellow */
-            --accent-dark: #f39c12;
-            --bg-color: #f4f7f6;
-            --card-bg: #ffffff;
-            --text-color: #333333;
-            --shadow: 0 10px 30px rgba(0,0,0,0.08);
-            --transition: all 0.3s ease;
+            --primary: #4caf50; /* Enticing Green */
+            --primary-light: #ffffff;
+            --accent: #333333;
+            --bg-light: #f4f7f6;
+            --white: #ffffff;
+            --text-dark: #2c3e50;
+            --text-light: #7f8c8d;
+            --danger: #e74c3c;
+            --success: #2ecc71;
+            --shadow: 0 4px 15px rgba(0,0,0,0.1);
+            --radius: 12px;
+            --nav-height: 60px;
         }
 
-        /* --- Global Reset --- */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            overflow-x: hidden;
-            padding-bottom: 80px;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
         }
 
         /* --- Header --- */
         header {
-            background-color: var(--card-bg);
-            padding: 1rem 2rem;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            background-color: var(--primary);
+            height: var(--nav-height);
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: space-between;
+            padding: 0 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 100;
         }
+
         .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--secondary-color);
-            text-transform: uppercase;
-            letter-spacing: 2px;
             display: flex;
             align-items: center;
-            gap: 10px;
-        }
-        .logo span { color: var(--primary-color); }
-
-        /* --- Main Container --- */
-        main {
-            max-width: 700px;
-            margin: 0 auto;
-            padding: 2rem 1rem;
-            text-align: center;
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--accent);
         }
 
-        /* --- Hero Section --- */
-        .hero {
-            background: var(--card-bg);
-            border-radius: 24px;
-            padding: 3rem 2rem;
-            margin-bottom: 2.5rem;
-            box-shadow: var(--shadow);
-            position: relative;
-            overflow: hidden;
+        .logo svg {
+            width: 24px;
+            height: 24px;
+            margin-right: 8px;
+            fill: var(--accent);
         }
-        .profile-wrapper {
-            width: 140px;
-            height: 140px;
-            margin: 0 auto 1rem;
-            border-radius: 50%;
-            padding: 4px;
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
-        }
-        .profile-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 4px solid var(--card-bg);
-        }
-        .hero h1 { font-size: 1.8rem; margin-bottom: 0.5rem; color: var(--secondary-color); }
-        .tagline { color: #7f8c8d; font-size: 0.95rem; font-weight: 500; margin-bottom: 1.5rem; }
-        
-        .hero-actions { display: flex; gap: 10px; flex-direction: column; }
 
-        .btn {
-            width: 100%;
-            padding: 0.9rem 1.5rem;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
+        .header-actions button {
+            background: none;
             border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--danger);
+            color: white;
+            font-size: 0.7rem;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            transition: var(--transition);
+            font-weight: bold;
         }
-        .btn-primary {
-            background: linear-gradient(45deg, var(--accent-color), var(--accent-dark));
-            color: var(--secondary-color);
-            box-shadow: 0 4px 15px rgba(241, 196, 15, 0.4);
-        }
-        .btn-secondary {
-            background: white;
-            color: var(--secondary-color);
-            border: 2px solid #eee;
-        }
-        .btn:hover { transform: translateY(-2px); filter: brightness(1.05); }
 
-        /* --- Viral Studio Section --- */
-        .studio-section {
-            background: var(--card-bg);
-            border-radius: 24px;
-            padding: 2rem;
-            margin-bottom: 2.5rem;
-            box-shadow: var(--shadow);
-            text-align: left;
-            border: 1px solid rgba(0,0,0,0.03);
+        /* --- Main Content Area --- */
+        main {
+            flex: 1;
+            overflow-y: auto;
+            padding: 15px;
+            position: relative;
         }
-        .section-title {
+
+        .page {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Components --- */
+        .btn {
+            background-color: var(--primary);
+            color: var(--accent);
+            border: none;
+            padding: 12px 20px;
+            border-radius: var(--radius);
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1rem;
+            transition: transform 0.1s;
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .input-group input, .input-group select, .input-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: var(--radius);
+            font-size: 1rem;
+            background: var(--white);
+        }
+
+        /* Phone Input Layout */
+        .phone-row {
+            display: flex;
+            gap: 10px;
+        }
+        .phone-row select {
+            flex: 1;
+        }
+        .phone-row input {
+            flex: 2;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: var(--shadow);
+        }
+
+        /* --- Auth Page --- */
+        .auth-container {
+            max-width: 400px;
+            margin: 40px auto;
+            text-align: center;
+        }
+
+        .marketing-text {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--accent);
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .marketing-sub {
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+
+        .auth-toggle {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+        }
+
+        .auth-toggle span {
+            color: #2980b9;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        /* --- Product Grid --- */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            background: #eee;
+        }
+
+        .product-info {
+            padding: 10px;
+            flex: 1;
+        }
+
+        .product-title {
+            font-size: 0.95rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .product-price {
+            color: var(--danger);
+            font-weight: bold;
+        }
+
+        .product-meta {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            margin-top: 5px;
+        }
+
+        /* --- Live Stream --- */
+        .video-placeholder {
+            width: 100%;
+            height: 250px;
+            background: #000;
+            border-radius: var(--radius);
             display: flex;
             align-items: center;
-            gap: 10px;
-            color: var(--secondary-color);
-            margin-bottom: 1.5rem;
-            font-size: 1.4rem;
-        }
-        .section-title i { color: #e74c3c; /* Fire color */ }
-
-        /* Post Input */
-        .input-group { margin-bottom: 1.5rem; }
-        .post-input {
-            width: 100%;
-            padding: 1rem;
-            border: 2px solid #f0f0f0;
-            border-radius: 12px;
-            font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
-            min-height: 100px;
-            resize: vertical;
-            transition: var(--transition);
-        }
-        .post-input:focus { border-color: var(--primary-color); outline: none; background: #fcfcfc; }
-
-        /* File Upload Area */
-        .upload-area {
-            border: 2px dashed #cbd5e0;
-            border-radius: 12px;
-            padding: 2rem;
-            text-align: center;
-            background: #f8fafc;
-            cursor: pointer;
-            transition: var(--transition);
-            margin-bottom: 1.5rem;
-            position: relative;
-        }
-        .upload-area:hover { border-color: var(--primary-color); background: #f0fdf4; }
-        .upload-icon { font-size: 2rem; color: var(--primary-color); margin-bottom: 0.5rem; }
-        .upload-text { font-size: 0.9rem; color: #64748b; }
-        .upload-text strong { color: var(--secondary-color); }
-        
-        /* The hidden actual input */
-        #fileInput { position: absolute; width: 100%; height: 100%; top: 0; left: 0; opacity: 0; cursor: pointer; }
-
-        /* Preview Grid */
-        .preview-grid {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-bottom: 1.5rem;
-        }
-        .preview-item {
-            position: relative;
-            width: 80px;
-            height: 80px;
-            border-radius: 8px;
-            overflow: hidden;
-            border: 1px solid #eee;
-        }
-        .preview-item img, .preview-item video { width: 100%; height: 100%; object-fit: cover; }
-        .remove-file {
-            position: absolute;
-            top: 2px; right: 2px;
-            background: rgba(0,0,0,0.6);
+            justify-content: center;
             color: white;
-            border: none;
-            width: 20px; height: 20px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 10px;
+            position: relative;
+            margin-bottom: 15px;
         }
 
-        /* Platform Selectors */
-        .platform-selector { margin-bottom: 2rem; }
-        .selector-label { font-size: 0.85rem; font-weight: 700; color: #94a3b8; text-transform: uppercase; margin-bottom: 10px; display: block; }
-        .platform-icons { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
-        
-        .platform-check {
+        .live-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: red;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.8rem;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        /* --- AI Assistant --- */
+        .ai-fab {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            border-radius: 50%;
+            box-shadow: 0 4px 20px rgba(255, 215, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 200;
+            font-size: 1.5rem;
+        }
+
+        .ai-panel {
+            position: fixed;
+            bottom: 150px;
+            right: 20px;
+            width: 300px;
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: 0 5px 30px rgba(0,0,0,0.2);
+            padding: 15px;
+            z-index: 200;
+            display: none;
+            flex-direction: column;
+        }
+
+        .ai-panel.active {
+            display: flex;
+        }
+
+        .ai-visualizer {
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            margin-bottom: 10px;
+        }
+
+        .bar {
+            width: 4px;
+            background: var(--primary);
+            height: 10px;
+            border-radius: 2px;
+            transition: height 0.1s;
+        }
+
+        .listening .bar {
+            animation: sound 0.5s infinite alternate;
+        }
+
+        @keyframes sound {
+            0% { height: 5px; }
+            100% { height: 30px; }
+        }
+
+        /* --- Inbox --- */
+        .chat-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #ddd;
+            margin-right: 10px;
+        }
+
+        /* --- Bottom Navigation --- */
+        .bottom-nav {
+            height: var(--nav-height);
+            background: var(--white);
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 90;
+        }
+
+        .nav-item {
             display: flex;
             flex-direction: column;
             align-items: center;
+            font-size: 0.7rem;
+            color: var(--text-light);
             cursor: pointer;
-            opacity: 0.4;
-            transition: var(--transition);
         }
-        .platform-check:hover { opacity: 0.8; }
-        .platform-check.active { opacity: 1; transform: scale(1.1); }
-        
-        .p-circle {
-            width: 45px; height: 45px;
-            border-radius: 50%;
-            background: #eee;
-            display: flex; align-items: center; justify-content: center;
-            color: #555;
+
+        .nav-item.active {
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .nav-icon {
             font-size: 1.2rem;
-            margin-bottom: 5px;
-            transition: var(--transition);
+            margin-bottom: 2px;
         }
-        /* Platform Specific Colors (Active State) */
-        .platform-check[data-p="facebook"].active .p-circle { background: #1877F2; color: white; box-shadow: 0 4px 10px rgba(24, 119, 242, 0.3); }
-        .platform-check[data-p="instagram"].active .p-circle { background: #E4405F; color: white; box-shadow: 0 4px 10px rgba(228, 64, 95, 0.3); }
-        .platform-check[data-p="tiktok"].active .p-circle { background: #000000; color: white; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
-        .platform-check[data-p="youtube"].active .p-circle { background: #FF0000; color: white; box-shadow: 0 4px 10px rgba(255, 0, 0, 0.3); }
-        .platform-check[data-p="x"].active .p-circle { background: #000000; color: white; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
 
-        .p-name { font-size: 0.75rem; font-weight: 600; color: #64748b; }
-
-        /* Publish Button */
-        .publish-btn {
-            width: 100%;
-            background: linear-gradient(90deg, var(--primary-color), var(--primary-dark));
-            color: white;
-            border: none;
-            padding: 1rem;
-            border-radius: 12px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            cursor: pointer;
-            box-shadow: 0 5px 20px rgba(46, 204, 113, 0.4);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            transition: var(--transition);
-        }
-        .publish-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(46, 204, 113, 0.5); }
-
-        /* --- Link Tree Grid --- */
-        .link-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; }
-        .social-card {
-            background: white;
-            padding: 1.2rem;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            text-decoration: none;
-            color: var(--secondary-color);
-            font-weight: 600;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.04);
-            transition: var(--transition);
-            border: 1px solid #f1f5f9;
-        }
-        .social-card:hover { transform: translateY(-3px); box-shadow: 0 10px 15px rgba(0,0,0,0.05); }
-        .social-card i { font-size: 1.4rem; }
-
-        /* Platform border accents */
-        .sc-yt { border-left: 5px solid #FF0000; }
-        .sc-fb { border-left: 5px solid #1877F2; }
-        .sc-tt { border-left: 5px solid #000; }
-        .sc-ig { border-left: 5px solid #E4405F; }
-        .sc-x { border-left: 5px solid #000; }
-
-        /* --- Contact --- */
-        .contact-box {
-            background: var(--secondary-color);
-            color: white;
-            border-radius: 20px;
-            padding: 2rem;
-            margin-top: 3rem;
-            text-align: center;
-        }
-        .contact-link { color: white; text-decoration: none; border-bottom: 1px dotted rgba(255,255,255,0.4); }
-
-        /* --- Footer --- */
-        footer { margin-top: 3rem; color: #94a3b8; font-size: 0.85rem; }
-
-        /* --- Custom Toast Notification --- */
-        #toast-container {
+        /* --- Toast Notification --- */
+        .toast {
             position: fixed;
-            bottom: 20px;
+            top: 20px;
             left: 50%;
             transform: translateX(-50%);
-            z-index: 2000;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        .toast {
-            background: rgba(44, 62, 80, 0.95);
-            color: white;
-            padding: 12px 24px;
-            border-radius: 50px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            background: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 20px;
             font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            animation: slideUp 0.3s ease-out;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
         }
-        @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
-        /* Mobile Responsive */
-        @media (max-width: 480px) {
-            .hero { padding: 2rem 1.5rem; }
-            .section-title { font-size: 1.2rem; }
-            .p-circle { width: 40px; height: 40px; font-size: 1rem; }
+        .toast.show {
+            opacity: 1;
+        }
+
+        /* Responsive Tweaks */
+        @media (min-width: 768px) {
+            body {
+                max-width: 480px; /* Simulate mobile app on PC */
+                margin: 0 auto;
+                border-left: 1px solid #ddd;
+                border-right: 1px solid #ddd;
+            }
+            .bottom-nav {
+                max-width: 480px;
+            }
+            .ai-fab {
+                right: calc(50% - 220px); /* Adjust for centered layout */
+            }
         }
     </style>
 </head>
 <body>
 
+    <!-- Header -->
     <header>
-        <div class="logo"><i class="fas fa-check-circle" style="color:var(--primary-color)"></i> HR <span>HOPE</span></div>
+        <div class="logo">
+            <!-- Yellow Shopping Bucket Icon SVG -->
+            <svg viewBox="0 0 24 24">
+                <path d="M19,6H16V5A3,3 0 0,0 13,2H11A3,3 0 0,0 8,5V6H5C3.9,6 3,6.9 3,8V19A3,3 0 0,0 6,22H18A3,3 0 0,0 21,19V8C21,6.9 20.1,6 19,6M10,5A1,1 0 0,1 11,4H13A1,1 0 0,1 14,5V6H10V5M19,19H6V8H19V19M11,17H13V10H11V17Z" />
+            </svg>
+            NYANGILAK MARKET
+        </div>
+        <div class="header-actions">
+            <button id="cart-btn" onclick="navigateTo('cart')" style="display: none;">
+                🛒 <span class="badge" id="cart-count">0</span>
+            </button>
+        </div>
     </header>
 
-    <main>
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="profile-wrapper">
-                <img src="https://z-cdn-media.chatglm.cn/files/ed712168-840e-46e4-a9b0-4e91b807d2da.png?auth_key=1868167284-e20f5edc61b541a99be5c4dec5da24f0-0-f8322b02656ceccd211f9a839d65d8e1" 
-                     alt="HR Hope" class="profile-img">
-            </div>
-            <h1>Mr. Hope</h1>
-            <p class="tagline">"Hoping for the best & spreading positive vibes"</p>
-            
-            <div class="hero-actions">
-                <button class="btn btn-primary" onclick="openAllLinks()">
-                    <i class="fas fa-user-plus"></i> Follow Me Everywhere
-                </button>
-                <button class="btn btn-secondary" onclick="shareSite()">
-                    <i class="fas fa-share-alt"></i> Share Profile
-                </button>
-            </div>
-        </section>
-
-        <!-- Viral Content Studio -->
-        <section class="studio-section">
-            <div class="section-title">
-                <i class="fas fa-rocket"></i>
-                <h2>Viral Studio</h2>
-            </div>
-            <p style="color:#666; font-size:0.9rem; margin-bottom:1.5rem;">
-                Create content here. We'll attach viral hashtags automatically to boost your reach.
-            </p>
-
-            <!-- 1. Text Input -->
-            <div class="input-group">
-                <textarea id="postText" class="post-input" placeholder="What's happening? Type your caption here..."></textarea>
-            </div>
-
-            <!-- 2. Upload Video/Photo Button -->
-            <div class="input-group">
-                <label class="upload-area" id="dropZone">
-                    <input type="file" id="fileInput" multiple accept="image/*,video/*">
-                    <div class="upload-icon"><i class="fas fa-cloud-upload-alt"></i></div>
-                    <div class="upload-text"><strong>Click to Upload</strong> or drag video/photo here</div>
-                </label>
-                <!-- Previews will appear here -->
-                <div id="previewContainer" class="preview-grid"></div>
-            </div>
-
-            <!-- 3. Select Platforms -->
-            <div class="platform-selector">
-                <span class="selector-label">Select Platforms to Post To:</span>
-                <div class="platform-icons">
-                    <div class="platform-check active" data-p="facebook" onclick="togglePlatform(this)">
-                        <div class="p-circle"><i class="fab fa-facebook-f"></i></div>
-                        <span class="p-name">Facebook</span>
+    <!-- Main Content -->
+    <main id="app-container">
+        
+        <!-- Auth Page -->
+        <div id="page-auth" class="page active">
+            <div class="auth-container">
+                <div class="marketing-text">Unlock Your<br>Desires.</div>
+                <p class="marketing-sub">Shop smart. Live fast. MYMARKT brings the world to your doorstep.</p>
+                
+                <div class="card">
+                    <div id="login-form">
+                        <h3>Login</h3>
+                        <br>
+                        <div class="input-group">
+                            <label>Account ID (Auto-filled)</label>
+                            <input type="text" id="login-id" placeholder="Your registered Phone/Email" readonly style="background-color: #f0f0f0; color: #666;">
+                        </div>
+                        <div class="input-group">
+                            <label>Password</label>
+                            <input type="password" id="login-pass" placeholder="********">
+                        </div>
+                        <div class="input-group">
+                            <label>Account Type</label>
+                            <select id="login-role">
+                                <option value="buyer">Buyer Account</option>
+                                <option value="seller">Seller Account</option>
+                            </select>
+                        </div>
+                        <button class="btn" onclick="handleLogin()">Login</button>
+                        <div class="auth-toggle">
+                            New here? <span onclick="toggleAuth('register')">Create Account</span>
+                        </div>
                     </div>
-                    <div class="platform-check active" data-p="instagram" onclick="togglePlatform(this)">
-                        <div class="p-circle"><i class="fab fa-instagram"></i></div>
-                        <span class="p-name">Instagram</span>
-                    </div>
-                    <div class="platform-check active" data-p="tiktok" onclick="togglePlatform(this)">
-                        <div class="p-circle"><i class="fab fa-tiktok"></i></div>
-                        <span class="p-name">TikTok</span>
-                    </div>
-                    <div class="platform-check active" data-p="youtube" onclick="togglePlatform(this)">
-                        <div class="p-circle"><i class="fab fa-youtube"></i></div>
-                        <span class="p-name">YouTube</span>
-                    </div>
-                    <div class="platform-check active" data-p="x" onclick="togglePlatform(this)">
-                        <div class="p-circle"><i class="fab fa-x-twitter"></i></div>
-                        <span class="p-name">X</span>
+
+                    <div id="register-form" style="display: none;">
+                        <h3>Join MYMARKT</h3>
+                        <br>
+                        <div class="input-group">
+                            <label>Full Name</label>
+                            <input type="text" id="reg-name" placeholder="KEINE NYANGILA">
+                        </div>
+                        <div class="input-group">
+                            <label>Phone Number</label>
+                            <div class="phone-row">
+                                <select id="country-code">
+                                    <option value="">Select...</option>
+                                    <!-- Populated by JS -->
+                                </select>
+                                <input type="tel" id="reg-phone" placeholder="123 456 7890">
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>Password</label>
+                            <input type="password" id="reg-pass" placeholder="Create password">
+                        </div>
+                        <div class="input-group">
+                            <label>Account Type</label>
+                            <select id="reg-role">
+                                <option value="buyer">Buyer Account</option>
+                                <option value="seller">Seller Account</option>
+                            </select>
+                        </div>
+                        <button class="btn" onclick="handleRegister()">Register Now</button>
+                        <div class="auth-toggle">
+                            Already have an account? <span onclick="toggleAuth('login')">Login</span>
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- 4. Post Button -->
-            <button class="publish-btn" onclick="goViral()">
-                <i class="fas fa-paper-plane"></i> Post to Selected Platforms
-            </button>
-        </section>
-
-        <!-- Link Section -->
-        <section>
-            <div class="link-grid">
-                <a href="https://www.youtube.com/@mrhope05" target="_blank" class="social-card sc-yt">
-                    <i class="fab fa-youtube" style="color:#FF0000"></i> <span>YouTube</span>
-                </a>
-                <a href="https://www.facebook.com/kevine.nyangila" target="_blank" class="social-card sc-fb">
-                    <i class="fab fa-facebook-f" style="color:#1877F2"></i> <span>Facebook</span>
-                </a>
-                <a href="https://www.tiktok.com/@mrhope05" target="_blank" class="social-card sc-tt">
-                    <i class="fab fa-tiktok"></i> <span>TikTok</span>
-                </a>
-                <a href="https://www.instagram.com/kevine_nyangila" target="_blank" class="social-card sc-ig">
-                    <i class="fab fa-instagram" style="color:#E4405F"></i> <span>Instagram</span>
-                </a>
-                <a href="https://www.x.com/ONyangila99940" target="_blank" class="social-card sc-x">
-                    <i class="fab fa-x-twitter"></i> <span>X (Twitter)</span>
-                </a>
+        <!-- Buyer Home -->
+        <div id="page-home" class="page">
+            <h2 style="margin-bottom: 15px;">Discover Goods</h2>
+            <!-- Search -->
+            <div class="input-group">
+                <input type="text" id="search-input" placeholder="What are you looking for?" onkeyup="filterProducts()">
             </div>
-        </section>
-
-        <!-- Contact -->
-        <section class="contact-box">
-            <h3>Contact Management</h3>
-            <div style="margin-top:15px; display:flex; justify-content:center; gap:20px; flex-wrap:wrap;">
-                <a href="tel:0707831904" class="contact-link"><i class="fas fa-phone"></i> 0707831904</a>
-                <a href="mailto:optimisticnyangila@gmail.com" class="contact-link"><i class="fas fa-envelope"></i> Email Me</a>
+            <div id="products-container" class="products-grid">
+                <!-- Products injected by JS -->
             </div>
-        </section>
+        </div>
+
+        <!-- Seller Dashboard -->
+        <div id="page-seller" class="page">
+            <h2>Seller Dashboard</h2>
+            <br>
+            <div class="card">
+                <h3>Add New Product</h3>
+                <br>
+                <div class="input-group">
+                    <label>Product Name</label>
+                    <input type="text" id="sell-name">
+                </div>
+                <div class="input-group">
+                    <label>Price ($)</label>
+                    <input type="number" id="sell-price">
+                </div>
+                <div class="input-group">
+                    <label>Shipment Days</label>
+                    <input type="text" id="sell-ship" placeholder="e.g. 3-5 days">
+                </div>
+                <div class="input-group">
+                    <label>Payment Methods</label>
+                    <select id="sell-pay">
+                        <option>Mobile Money</option>
+                        <option>Credit/Debit Card</option>
+                        <option>Both</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label>Image URL (Optional)</label>
+                    <input type="text" id="sell-img" placeholder="https://...">
+                </div>
+                <button class="btn" onclick="addProduct()">Display Goods</button>
+            </div>
+            <div class="card">
+                <h3>Your Inventory</h3>
+                <ul id="seller-inventory" style="list-style: none; margin-top: 10px;"></ul>
+            </div>
+        </div>
+
+        <!-- Live Page -->
+        <div id="page-live" class="page">
+            <h2 style="margin-bottom: 15px;">Live & Events</h2>
+            
+            <!-- Seller View of Live -->
+            <div id="seller-live-controls" class="card" style="display: none;">
+                <h3>Start Streaming</h3>
+                <p>Connect with your buyers in real-time.</p>
+                <br>
+                <button class="btn" onclick="goLive()">Go Live Now</button>
+            </div>
+
+            <!-- The Live Stream Area -->
+            <div class="video-placeholder">
+                <div class="live-badge" id="live-badge" style="display: none;">LIVE</div>
+                <span id="video-text" style="text-align: center; padding: 20px;">
+                    Select a stream or start one.
+                </span>
+            </div>
+
+            <div class="card">
+                <h3>Live Chat</h3>
+                <div style="height: 150px; overflow-y: auto; margin-bottom: 10px; border: 1px solid #eee; padding: 5px;">
+                    <p style="font-size: 0.8rem; color: #888;"><i>User123: Is this available?</i></p>
+                    <p style="font-size: 0.8rem; color: #888;"><i>Seller: Yes it is!</i></p>
+                </div>
+                <div style="display: flex; gap: 5px;">
+                    <input type="text" placeholder="Type a message..." style="flex: 1; padding: 8px; border-radius: 4px; border: 1px solid #ddd;">
+                    <button class="btn" style="width: auto;">Send</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Inbox Page -->
+        <div id="page-inbox" class="page">
+            <h2 style="margin-bottom: 15px;">Inbox</h2>
+            <div class="card" style="padding: 0;">
+                <div class="chat-item" onclick="openChat('Fashion Hub')">
+                    <div class="avatar"></div>
+                    <div>
+                        <div style="font-weight: bold;">Fashion Hub</div>
+                        <div style="font-size: 0.8rem; color: #777;">We shipped your order!</div>
+                    </div>
+                </div>
+                <div class="chat-item" onclick="openChat('Tech Store')">
+                    <div class="avatar" style="background: #ccc;"></div>
+                    <div>
+                        <div style="font-weight: bold;">Tech Store</div>
+                        <div style="font-size: 0.8rem; color: #777;">Thanks for the purchase.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cart Page -->
+        <div id="page-cart" class="page">
+            <h2>Shopping Cart</h2>
+            <br>
+            <div id="cart-items-container">
+                <!-- Cart items here -->
+            </div>
+            
+            <div class="card" id="checkout-section" style="display:none;">
+                <div class="input-group">
+                    <label>Shipping Address</label>
+                    <textarea id="ship-address" rows="3" placeholder="Enter your full address"></textarea>
+                </div>
+                <div style="display: flex; justify-content: space-between; font-weight: bold; margin-bottom: 15px;">
+                    <span>Total:</span>
+                    <span id="cart-total">$0.00</span>
+                </div>
+                <button class="btn" onclick="checkout()">Confirm Order</button>
+            </div>
+            <div id="empty-cart-msg" style="text-align: center; color: #777;">Your bucket is empty!</div>
+        </div>
+
     </main>
 
-    <footer>
-        <p>&copy; 2024 HR HOPE. All Rights Reserved.</p>
-    </footer>
+    <!-- AI Floating Button & Panel -->
+    <div class="ai-fab" onclick="toggleAI()">🎙️</div>
+    
+    <div class="ai-panel" id="ai-panel">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+            <strong>NYANGILA AI Assistant</strong>
+            <button onclick="toggleAI()" style="background:none; border:none; cursor:pointer;">✖</button>
+        </div>
+        <div class="ai-visualizer" id="ai-visualizer">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <div style="background: #f9f9f9; padding: 10px; border-radius: 8px; font-size: 0.9rem; margin-bottom: 10px; max-height: 100px; overflow-y: auto;" id="ai-status">
+            Tap microphone and say "Order [Item]" or "Show [Category]".
+        </div>
+        <input type="text" id="ai-text-input" placeholder="Type command here..." style="padding: 8px; border: 1px solid #ddd; border-radius: 4px; margin-bottom: 5px;">
+        <button class="btn" id="ai-action-btn" onclick="activateAI()">Hold to Speak</button>
+    </div>
 
-    <!-- Toast Container -->
-    <div id="toast-container"></div>
+    <!-- Navigation -->
+    <nav class="bottom-nav" id="main-nav" style="display: none;">
+        <div class="nav-item active" onclick="navigateTo('home')" id="nav-home">
+            <span class="nav-icon">🏠</span>
+            <span>Home</span>
+        </div>
+        <div class="nav-item" onclick="navigateTo('live')" id="nav-live">
+            <span class="nav-icon">📡</span>
+            <span>Live</span>
+        </div>
+        <div class="nav-item" onclick="navigateTo('inbox')" id="nav-inbox">
+            <span class="nav-icon">✉️</span>
+            <span>Inbox</span>
+        </div>
+        <div class="nav-item" onclick="navigateTo('seller')" id="nav-seller">
+            <span class="nav-icon">🏪</span>
+            <span>Seller</span>
+        </div>
+        <div class="nav-item" onclick="handleLogout()">
+            <span class="nav-icon">🚪</span>
+            <span>Exit</span>
+        </div>
+    </nav>
+
+    <!-- Toast -->
+    <div id="toast" class="toast">Notification</div>
 
     <script>
-        // --- 1. State Management ---
-        let selectedFiles = [];
+        /* --- Country Codes Data --- */
+        const countryCodes = [
+            { name: "United States", code: "+1" },
+            { name: "United Kingdom", code: "+44" },
+            { name: "Afghanistan", code: "+93" },
+            { name: "Albania", code: "+355" },
+            { name: "Algeria", code: "+213" },
+            { name: "Argentina", code: "+54" },
+            { name: "Australia", code: "+61" },
+            { name: "Austria", code: "+43" },
+            { name: "Bangladesh", code: "+880" },
+            { name: "Belgium", code: "+32" },
+            { name: "Brazil", code: "+55" },
+            { name: "Canada", code: "+1" },
+            { name: "China", code: "+86" },
+            { name: "Colombia", code: "+57" },
+            { name: "Congo", code: "+243" },
+            { name: "Egypt", code: "+20" },
+            { name: "France", code: "+33" },
+            { name: "Germany", code: "+49" },
+            { name: "Ghana", code: "+233" },
+            { name: "Greece", code: "+30" },
+            { name: "India", code: "+91" },
+            { name: "Indonesia", code: "+62" },
+            { name: "Iran", code: "+98" },
+            { name: "Iraq", code: "+964" },
+            { name: "Ireland", code: "+353" },
+            { name: "Italy", code: "+39" },
+            { name: "Japan", code: "+81" },
+            { name: "Jordan", code: "+962" },
+            { name: "Kenya", code: "+254" },
+            { name: "Kuwait", code: "+965" },
+            { name: "Lebanon", code: "+961" },
+            { name: "Libya", code: "+218" },
+            { name: "Malaysia", code: "+60" },
+            { name: "Mexico", code: "+52" },
+            { name: "Morocco", code: "+212" },
+            { name: "Netherlands", code: "+31" },
+            { name: "New Zealand", code: "+64" },
+            { name: "Nigeria", code: "+234" },
+            { name: "North Korea", code: "+850" },
+            { name: "Norway", code: "+47" },
+            { name: "Pakistan", code: "+92" },
+            { name: "Philippines", code: "+63" },
+            { name: "Poland", code: "+48" },
+            { name: "Portugal", code: "+351" },
+            { name: "Russia", code: "+7" },
+            { name: "Saudi Arabia", code: "+966" },
+            { name: "Singapore", code: "+65" },
+            { name: "South Africa", code: "+27" },
+            { name: "South Korea", code: "+82" },
+            { name: "Spain", code: "+34" },
+            { name: "Sweden", code: "+46" },
+            { name: "Switzerland", code: "+41" },
+            { name: "Syria", code: "+963" },
+            { name: "Taiwan", code: "+886" },
+            { name: "Thailand", code: "+66" },
+            { name: "Turkey", code: "+90" },
+            { name: "Ukraine", code: "+380" },
+            { name: "UAE", code: "+971" },
+            { name: "Venezuela", code: "+58" },
+            { name: "Vietnam", code: "+84" },
+            { name: "Yemen", code: "+967" },
+            { name: "Zimbabwe", code: "+263" }
+        ];
 
-        // --- 2. Platform Toggling ---
-        function togglePlatform(el) {
-            el.classList.toggle('active');
-        }
+        /* --- State Management --- */
+        const state = {
+            user: null, // { id, type: 'buyer'|'seller' }
+            products: [
+                { id: 1, name: 'Yellow Sneakers', price: 45, category: 'shoes', image: 'https://picsum.photos/seed/shoe/150/150', ship: '2 Days', pay: 'Mobile Money, Card' },
+                { id: 2, name: 'Summer Dress', price: 30, category: 'clothing', image: 'https://picsum.photos/seed/dress/150/150', ship: '5 Days', pay: 'Card' },
+                { id: 3, name: 'Smartphone X', price: 699, category: 'tech', image: 'https://picsum.photos/seed/phone/150/150', ship: '1 Day', pay: 'Card' },
+                { id: 4, name: 'Leather Bag', price: 85, category: 'accessories', image: 'https://picsum.photos/seed/bag/150/150', ship: '3 Days', pay: 'Mobile Money' },
+            ],
+            cart: [],
+            isListening: false
+        };
 
-        // --- 3. File Handling & Preview ---
-        const fileInput = document.getElementById('fileInput');
-        const previewContainer = document.getElementById('previewContainer');
-
-        fileInput.addEventListener('change', (e) => {
-            const newFiles = Array.from(e.target.files);
-            selectedFiles = [...selectedFiles, ...newFiles];
-            renderPreviews();
-            // Reset input so same file can be selected again if deleted
-            fileInput.value = '';
-        });
-
-        function renderPreviews() {
-            previewContainer.innerHTML = '';
-            selectedFiles.forEach((file, index) => {
-                const div = document.createElement('div');
-                div.className = 'preview-item';
-                
-                let mediaElem;
-                if (file.type.startsWith('image/')) {
-                    mediaElem = document.createElement('img');
-                } else if (file.type.startsWith('video/')) {
-                    mediaElem = document.createElement('video');
-                }
-                
-                mediaElem.src = URL.createObjectURL(file);
-                div.appendChild(mediaElem);
-
-                // Remove button
-                const btn = document.createElement('button');
-                btn.className = 'remove-file';
-                btn.innerHTML = '&times;';
-                btn.onclick = (e) => {
-                    e.stopPropagation(); // Prevent opening file dialog
-                    selectedFiles.splice(index, 1);
-                    renderPreviews();
-                };
-                div.appendChild(btn);
-
-                previewContainer.appendChild(div);
+        /* --- Initialization --- */
+        window.onload = function() {
+            // Populate Country Codes
+            const select = document.getElementById('country-code');
+            countryCodes.forEach(country => {
+                const option = document.createElement('option');
+                option.value = country.code;
+                option.textContent = `${country.name} (${country.code})`;
+                select.appendChild(option);
             });
+
+            // Check for saved user credentials for "Password Only" login
+            checkSavedCredentials();
+        };
+
+        function checkSavedCredentials() {
+            const savedUser = localStorage.getItem('mymarkt_user');
+            if (savedUser) {
+                const userData = JSON.parse(savedUser);
+                document.getElementById('login-id').value = userData.id;
+                document.getElementById('login-id').placeholder = "Your registered phone";
+                // The input is readonly in HTML, so user cannot edit it
+            }
         }
 
-        // --- 4. Viral Logic (The Core) ---
-        async function goViral() {
-            const textInput = document.getElementById('postText').value;
-            const activePlatforms = document.querySelectorAll('.platform-check.active');
-            
-            // Validation
-            if (activePlatforms.length === 0) {
-                showToast("Please select at least one platform!", "error");
+        /* --- Auth Functions --- */
+        function toggleAuth(view) {
+            if (view === 'register') {
+                document.getElementById('login-form').style.display = 'none';
+                document.getElementById('register-form').style.display = 'block';
+            } else {
+                document.getElementById('login-form').style.display = 'block';
+                document.getElementById('register-form').style.display = 'none';
+                // Check again in case user just registered
+                checkSavedCredentials();
+            }
+        }
+
+        function handleRegister() {
+            const name = document.getElementById('reg-name').value;
+            const code = document.getElementById('country-code').value;
+            const phone = document.getElementById('reg-phone').value;
+            const pass = document.getElementById('reg-pass').value;
+            const role = document.getElementById('reg-role').value;
+
+            if (!name || !code || !phone || !pass) {
+                showToast("Please fill all fields.");
                 return;
             }
 
-            // Auto-append Hashtags
-            const viralTags = "\n\n#HRHOPE #MrHope #Viral #Trending #FYP #Kenya #ContentCreator #HopingForTheBest";
-            const finalText = textInput + viralTags;
+            const fullPhone = code + phone;
 
-            // --- Communication Logic: Native Share API ---
-            // This communicates with the phone OS to open the specific app with the file attached.
-            if (navigator.share) {
-                try {
-                    const shareData = {
-                        title: 'HR HOPE - Viral Content',
-                        text: finalText,
-                        url: 'https://www.youtube.com/@mrhope05' // Default link
-                    };
+            // Save to LocalStorage (Simulating Database)
+            const userData = {
+                id: fullPhone,
+                password: pass,
+                name: name,
+                type: role
+            };
+            
+            localStorage.setItem('mymarkt_user', JSON.stringify(userData));
 
-                    // If files are selected and supported, attach them
-                    if (selectedFiles.length > 0 && navigator.canShare && navigator.canShare({ files: selectedFiles })) {
-                        shareData.files = selectedFiles;
-                    }
+            // Auto fill login form
+            document.getElementById('login-id').value = fullPhone;
+            
+            showToast("Account created! Please login with your password.");
+            toggleAuth('login');
+        }
 
-                    await navigator.share(shareData);
-                    showToast("Success! Opening selected apps...");
-                } catch (err) {
-                    console.log("Share canceled or failed", err);
+        function handleLogin() {
+            const idInput = document.getElementById('login-id');
+            const passInput = document.getElementById('login-pass');
+            const roleInput = document.getElementById('login-role').value;
+
+            // In a real app, we would check against a server. 
+            // Here we check against LocalStorage if it matches the ID we auto-filled.
+            const savedUserStr = localStorage.getItem('mymarkt_user');
+            
+            if (!savedUserStr) {
+                showToast("No account found. Please register.");
+                return;
+            }
+
+            const savedUser = JSON.parse(savedUserStr);
+
+            // Validate Password
+            // Note: In this simplified version, we assume the ID matches because it was auto-filled/readonly.
+            if (passInput.value === savedUser.password) {
+                
+                state.user = { id: savedUser.id, type: roleInput }; // Use selected role for demo flexibility
+                
+                // UI Updates
+                document.getElementById('page-auth').classList.remove('active');
+                document.getElementById('main-nav').style.display = 'flex';
+                
+                if (roleInput === 'buyer') {
+                    navigateTo('home');
+                    document.getElementById('nav-seller').style.display = 'none';
+                    document.getElementById('cart-btn').style.display = 'block';
+                } else {
+                    navigateTo('seller');
+                    document.getElementById('nav-seller').style.display = 'flex';
+                    document.getElementById('cart-btn').style.display = 'none';
                 }
-            } 
-            // --- Fallback for Desktop (No Native Share) ---
-            else {
-                // Copy text to clipboard
-                navigator.clipboard.writeText(finalText).then(() => {
-                    showToast("Text & Hashtags copied! Opening apps now...");
-                    
-                    // Open each selected platform in a new tab
-                    activePlatforms.forEach((p) => {
-                        const type = p.getAttribute('data-p');
-                        let url = "";
-                        
-                        // Direct URLs since we can't inject files on desktop without APIs
-                        if (type === 'facebook') url = "https://www.facebook.com/kevine.nyangila";
-                        if (type === 'tiktok') url = "https://www.tiktok.com/@mrhope05";
-                        if (type === 'instagram') url = "https://www.instagram.com/kevine_nyangila";
-                        if (type === 'youtube') url = "https://www.youtube.com/@mrhope05";
-                        if (type === 'x') url = "https://www.x.com/ONyangila99940";
 
-                        setTimeout(() => window.open(url, '_blank'), 500);
-                    });
-                });
+                showToast(`Welcome back!`);
+                speak(`Welcome back to MYMARKT. How can I help you today?`);
+            } else {
+                showToast("Incorrect password.");
             }
         }
 
-        // --- 5. Helper: Open All Links ---
-        function openAllLinks() {
-            const links = [
-                "https://www.youtube.com/@mrhope05",
-                "https://www.facebook.com/kevine.nyangila",
-                "https://www.tiktok.com/@mrhope05",
-                "https://www.instagram.com/kevine_nyangila",
-                "https://www.x.com/ONyangila99940"
-            ];
-            showToast("Opening all your profiles...");
-            let delay = 300;
-            links.forEach(link => {
-                setTimeout(() => window.open(link, '_blank'), delay);
-                delay += 500;
+        function handleLogout() {
+            state.user = null;
+            // We do NOT clear the localStorage ID so that the user only needs to type password next time
+            document.getElementById('main-nav').style.display = 'none';
+            document.getElementById('page-auth').classList.add('active');
+            document.querySelectorAll('.page').forEach(p => {
+                if(p.id !== 'page-auth') p.classList.remove('active');
+            });
+            document.getElementById('cart-btn').style.display = 'none';
+            document.getElementById('login-pass').value = ""; // Clear password only
+            showToast("Logged out.");
+        }
+
+        /* --- Navigation --- */
+        function navigateTo(pageId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(`page-${pageId}`).classList.add('active');
+            
+            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+            const navItem = document.getElementById(`nav-${pageId}`);
+            if (navItem) navItem.classList.add('active');
+
+            if (pageId === 'home') renderProducts();
+            if (pageId === 'cart') renderCart();
+        }
+
+        /* --- Buyer Logic --- */
+        function renderProducts() {
+            const container = document.getElementById('products-container');
+            container.innerHTML = '';
+            
+            const filter = document.getElementById('search-input').value.toLowerCase();
+            
+            state.products.forEach(p => {
+                if (p.name.toLowerCase().includes(filter) || p.category.toLowerCase().includes(filter)) {
+                    const el = document.createElement('div');
+                    el.className = 'product-card';
+                    el.innerHTML = `
+                        <img src="${p.image}" class="product-img" alt="${p.name}">
+                        <div class="product-info">
+                            <div class="product-title">${p.name}</div>
+                            <div class="product-price">$${p.price}</div>
+                            <div class="product-meta">🚚 ${p.ship} | 💳 ${p.pay.split(' ')[0]}</div>
+                            <button class="btn btn-outline" style="margin-top:10px; padding: 5px;" onclick="addToCart(${p.id})">Add to Bucket</button>
+                        </div>
+                    `;
+                    container.appendChild(el);
+                }
             });
         }
 
-        // --- 6. Helper: Share Site ---
-        async function shareSite() {
-            if (navigator.share) {
-                try {
-                    await navigator.share({
-                        title: 'Check out HR HOPE',
-                        text: 'Mr. Hope is hoping for the best! Follow his journey.',
-                        url: window.location.href
-                    });
-                } catch (err) { console.log('Closed'); }
-            } else {
-                navigator.clipboard.writeText(window.location.href);
-                showToast("Link copied to clipboard!");
+        function filterProducts() {
+            renderProducts();
+        }
+
+        function addToCart(id) {
+            const product = state.products.find(p => p.id === id);
+            if (product) {
+                state.cart.push(product);
+                updateCartCount();
+                showToast(`${product.name} added to bucket!`);
+                speak(`Added ${product.name} to your shopping bucket.`);
             }
         }
 
-        // --- 7. Helper: Toast Notification ---
-        function showToast(message, type = 'success') {
-            const container = document.getElementById('toast-container');
-            const toast = document.createElement('div');
-            toast.className = 'toast';
+        function updateCartCount() {
+            document.getElementById('cart-count').innerText = state.cart.length;
+        }
+
+        function renderCart() {
+            const container = document.getElementById('cart-items-container');
+            container.innerHTML = '';
+            const totalEl = document.getElementById('cart-total');
+            const checkoutSec = document.getElementById('checkout-section');
+            const emptyMsg = document.getElementById('empty-cart-msg');
+
+            if (state.cart.length === 0) {
+                checkoutSec.style.display = 'none';
+                emptyMsg.style.display = 'block';
+                return;
+            }
+
+            emptyMsg.style.display = 'none';
+            checkoutSec.style.display = 'block';
+            let total = 0;
+
+            state.cart.forEach((item, index) => {
+                total += item.price;
+                const el = document.createElement('div');
+                el.className = 'card';
+                el.style.padding = '10px';
+                el.style.display = 'flex';
+                el.style.justifyContent = 'space-between';
+                el.style.alignItems = 'center';
+                el.innerHTML = `
+                    <div>
+                        <strong>${item.name}</strong><br>
+                        <small>$${item.price}</small>
+                    </div>
+                    <button style="background:var(--danger); color:white; border:none; padding:5px 10px; border-radius:4px;" onclick="removeFromCart(${index})">Remove</button>
+                `;
+                container.appendChild(el);
+            });
+
+            totalEl.innerText = '$' + total.toFixed(2);
+        }
+
+        function removeFromCart(index) {
+            state.cart.splice(index, 1);
+            updateCartCount();
+            renderCart();
+        }
+
+        function checkout() {
+            const addr = document.getElementById('ship-address').value;
+            if (!addr) {
+                showToast("Please enter your shipping address.");
+                return;
+            }
+            showToast("Order placed successfully!");
+            state.cart = [];
+            updateCartCount();
+            document.getElementById('ship-address').value = '';
+            renderCart();
+            speak("Order confirmed. We will ship it to your address soon.");
+        }
+
+        /* --- Seller Logic --- */
+        function addProduct() {
+            const name = document.getElementById('sell-name').value;
+            const price = parseFloat(document.getElementById('sell-price').value);
+            const ship = document.getElementById('sell-ship').value;
+            const pay = document.getElementById('sell-pay').value;
+            let img = document.getElementById('sell-img').value;
+
+            if (!name || !price) {
+                showToast("Please fill in product details.");
+                return;
+            }
+            if (!img) img = `https://picsum.photos/seed/${name}/150/150`;
+
+            const newProd = {
+                id: Date.now(),
+                name, price, category: 'general', image: img, ship, pay
+            };
+
+            state.products.push(newProd);
             
-            let icon = type === 'error' ? '<i class="fas fa-exclamation-circle"></i>' : '<i class="fas fa-check-circle"></i>';
-            toast.innerHTML = `${icon} <span>${message}</span>`;
+            document.getElementById('sell-name').value = '';
+            document.getElementById('sell-price').value = '';
             
-            container.appendChild(toast);
+            const list = document.getElementById('seller-inventory');
+            const li = document.createElement('li');
+            li.innerHTML = `<strong>${name}</strong> - $${price}`;
+            list.appendChild(li);
+
+            showToast("Product listed successfully!");
+        }
+
+        function goLive() {
+            document.getElementById('live-badge').style.display = 'block';
+            document.getElementById('video-text').innerHTML = '🔴 You are LIVE<br>Speak to your audience!';
+            showToast("You are now live.");
+        }
+
+        function openChat(name) {
+            showToast(`Opening chat with ${name}...`);
+        }
+
+        /* --- AI Assistant Logic --- */
+        const synth = window.speechSynthesis;
+        const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+        recognition.continuous = false;
+        recognition.lang = 'en-US';
+
+        function toggleAI() {
+            const panel = document.getElementById('ai-panel');
+            panel.classList.toggle('active');
+        }
+
+        function speak(text) {
+            if (synth.speaking) synth.cancel();
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.pitch = 1.1;
+            utterance.rate = 1;
+            synth.speak(utterance);
+        }
+
+        function activateAI() {
+            if (state.isListening) return;
+            state.isListening = true;
+            document.getElementById('ai-visualizer').classList.add('listening');
+            document.getElementById('ai-status').innerText = "Listening...";
             
-            // Remove after 3 seconds
-            setTimeout(() => {
-                toast.style.opacity = '0';
-                toast.style.transform = 'translateY(20px)';
-                setTimeout(() => toast.remove(), 300);
-            }, 3000);
+            try {
+                recognition.start();
+            } catch(e) {
+                processAIInput(document.getElementById('ai-text-input').value);
+                state.isListening = false;
+                document.getElementById('ai-visualizer').classList.remove('listening');
+            }
+        }
+
+        recognition.onresult = (event) => {
+            const transcript = event.results[0][0].transcript;
+            document.getElementById('ai-status').innerText = `You said: "${transcript}"`;
+            processAIInput(transcript);
+        };
+
+        recognition.onend = () => {
+            state.isListening = false;
+            document.getElementById('ai-visualizer').classList.remove('listening');
+        };
+
+        function processAIInput(text) {
+            text = text.toLowerCase();
+            let response = "";
+
+            if (text.includes("order") || text.includes("buy")) {
+                const product = state.products.find(p => text.includes(p.name.toLowerCase()) || text.includes(p.category.toLowerCase()));
+                
+                if (product) {
+                    addToCart(product.id);
+                    response = `I have added the ${product.name} to your bucket for $${product.price}.`;
+                } else {
+                    response = "I couldn't find that specific product. Would you like me to show you the catalog?";
+                }
+            }
+            else if (text.includes("show") || text.includes("display") || text.includes("looking for")) {
+                navigateTo('home');
+                response = "Here is the shop. You can browse items here.";
+                state.products.forEach(p => {
+                    if (text.includes(p.category.toLowerCase())) {
+                        document.getElementById('search-input').value = p.category;
+                        filterProducts();
+                        response = `I found these ${p.category} for you.`;
+                    }
+                });
+            }
+            else if (text.includes("price") || text.includes("cost")) {
+                const product = state.products.find(p => text.includes(p.name.toLowerCase()));
+                if (product) {
+                    response = `The ${product.name} costs $${product.price}.`;
+                } else {
+                    response = "Which product would you like to know the price of?";
+                }
+            }
+            else if (text.includes("help") || text.includes("hi")) {
+                response = "Hello! I am NYANGILA. You can tell me to order anything you want.";
+            }
+            else {
+                response = "I'm nyangila ai assistant how may i help you?";
+            }
+
+            document.getElementById('ai-status').innerText = `AI: ${response}`;
+            speak(response);
+        }
+
+        /* --- Utilities --- */
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            toast.innerText = msg;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
         }
     </script>
 </body>
